@@ -1,5 +1,5 @@
 <?php 
-
+require_once('participant.php');
 
 class Equipe extends Participant{
     
@@ -8,9 +8,9 @@ class Equipe extends Participant{
     private $ClubID;
     private $db;
 
-    public function __construct($id,$jeu,$ClubID,$name)
+    public function __construct()
     {
-       parent::__construct($name);
+       
        $this-> db = new Dtabese("localhost","e_sport_event_manager","root","");
     }
 
@@ -24,12 +24,12 @@ class Equipe extends Participant{
 
    }
 
-   public function getName(){
+   public function getNom(){
       return $this->Nom;
 
    }
 
-    public function setName($nam){
+    public function setNom($nam){
        $this->Nom = $nam ;
 
    }
@@ -59,7 +59,7 @@ class Equipe extends Participant{
    public function cree(){
 
       $conect = $this->db -> getConnexion();
-      $sql = "INSERT INTO club(Nom, Jeu,Club_id) VALUES(?,?,?)";
+      $sql = "INSERT INTO Equipe(Nom, Jeu,Club_id) VALUES(?,?,?)";
       $stmt =   $conect-> prepare($sql);
       $stmt->execute([$this->Nom, $this->Jeu,$this->ClubID]);
      
@@ -68,7 +68,7 @@ class Equipe extends Participant{
    public function gettAll(){
 
       $conect = $this->db -> getConnexion();
-      $sql = "select  * from Equipe  ";
+      $sql = "select  * from equipe  ";
       $stmt =   $conect-> prepare($sql);
       $stmt->execute();
       return  $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -77,7 +77,7 @@ class Equipe extends Participant{
    public function update(){
 
       $conect = $this->db -> getConnexion();
-      $sql = "update  Equipe set Nom = ?, Jeu = ? Club_id=? where Club_id = $this->id  ";
+      $sql = "update  Equipe set Nom = ?, Jeu = ?, Club_id = ? where Equipe_id = $this->id ";
       $stmt =   $conect-> prepare($sql);
        $stmt->execute([$this->Nom, $this->Jeu,$this->ClubID]);
      
