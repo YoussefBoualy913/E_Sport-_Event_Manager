@@ -16,8 +16,13 @@ class Dtabese{
     }
 
     public function getConnexion(){
-
-   return mysqli_connect( $this->host, $this->database, $this->password,);
+        try {
+            $pdo = new PDO("mysql:host={$this->host};dbname={$this->database}", $this->username, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch (PDOException $e) {
+            die("Erreur de connexion : " . $e->getMessage());
+        }
 
    }
 
