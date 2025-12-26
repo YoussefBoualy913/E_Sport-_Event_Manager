@@ -8,8 +8,8 @@ while(true){
     echo "2.joueur\n";
     echo "3.equipe\n";
     echo "4.Match\n";
-    echo "4.tornoi\n";
-    echo "4.statistique\n";
+    echo "5.tornoi\n";
+    echo "6.statistique\n";
     break;
 }
  $console = new Console();
@@ -94,6 +94,7 @@ switch($choix){
                     $eq->setId($console->input("id:"));
                     $eq->delete();
                     break;
+
                     case '4':
                     $eq = new Equipe();
                     $rows = $eq->gettAll();
@@ -109,8 +110,65 @@ switch($choix){
                  break;
 
          }
+    break;
+    
+     case '5':
+           require_once("Tournoi.php");
+          echo "-----------------Menu Tournoi-------------------\n";
+
+          echo "1. AJouter un Tournoi\n";
+          echo "2. Modifier un Tournoi\n";
+          echo "3. Suppime un Tournoi\n";
+          echo "4. Afficher un Tournoi\n";
+          $choix2 = $console->input("Entre votre choix");
+         switch($choix2){
+                   case '1':
+                    $eq = new Tournoi();
+                    $eq->setTitre($console->input("Titre:"));
+                    $eq->setCashprize($console->input("Cashprize:"));
+                    $eq->setFormat($console->input("Forma:"));
+                    $eq->setDate($console->input("Date:"));
+                    $eq->cree();
+                    break;
+
+                    case '2':
+                      $eq = new Tournoi();
+                    $eq->setId($console->input("id:"));
+                    $eq->setTitre($console->input("Titre:"));
+                    $eq->setCashprize($console->input("Cashprize:"));
+                    $eq->setFormat($console->input("Format:"));
+                    $eq->setDate($console->input("Date:"));
+                    $eq->update();
+
+                    break;
+
+                    case '3':
+                    $eq = new Tournoi();
+                    $eq->setId($console->input("id:"));
+                    $eq->delete();
+                    break;
+                    
+                    case '4':
+                    $eq = new Tournoi();
+                    $rows = $eq->gettAll();
+                    foreach($rows as $equip){
+                      echo "id:". $equip['Tournoi_id']."\n";
+                      echo "Titre:". $equip['Titre']."\n";
+                      echo "Cashprize:". $equip['Cashprize']."\n";
+                      echo "Format :". $equip['Format']."\n";
+                      echo "Date :". $equip['Date']."\n\n";
+                    }
+               break;
+               default:
+                 echo "Option invalide ";
+                 break;
+
+         }
     break; 
-     
+    
+    default:
+                 echo "Option invalide ";
+                 break;
 }
 
 ?>
