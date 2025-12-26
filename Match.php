@@ -1,7 +1,7 @@
 <?php 
 
 
-class Club{
+class Matchs{
     
     private $id;
     private $Nom;

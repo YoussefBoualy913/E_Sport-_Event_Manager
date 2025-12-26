@@ -1,7 +1,7 @@
 <?php 
 
 
-class Club{
+class Tournoi{
     
     private $id;
     private $Titre;

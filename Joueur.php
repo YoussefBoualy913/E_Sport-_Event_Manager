@@ -1,7 +1,7 @@
 <?php 
 
 
-class Club{
+class Joueur{
     
     private $id;
     private $Pseudo;

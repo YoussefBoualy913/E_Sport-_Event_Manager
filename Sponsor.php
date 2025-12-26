@@ -1,7 +1,7 @@
 <?php 
 
 
-class Club{
+class Sponsor{
     
     private $id;
     private $Nom;

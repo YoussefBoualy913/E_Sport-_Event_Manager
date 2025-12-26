@@ -1,9 +1,17 @@
 
 <?php 
 abstract class Participant{
-    protected $name;
+    protected $Nom;
 
-    abstract public function crée();
+    public function __construct($name)
+    {
+       $this->Nom = $name;
+    }
+
+    abstract public function cree();
+    abstract public function gettAll();
+    abstract public function update();
+    abstract public function delete();
 }
 
 
