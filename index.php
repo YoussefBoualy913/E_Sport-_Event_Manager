@@ -111,6 +111,65 @@ switch($choix){
 
          }
     break;
+
+     case '4':
+           require_once("Match.php");
+          echo "-----------------Menu Matchs-------------------\n";
+
+          echo "1. AJouter un Matchs\n";
+          echo "2. Modifier un Matchs\n";
+          echo "3. Suppime un Matchs\n";
+          echo "4. Afficher un Matchs\n";
+          $choix2 = $console->input("Entre votre choix");
+         switch($choix2){
+                   case '1':
+                    $ma = new Matchs();
+                   $ma->setNom($console->input("Nom de match :"));
+                    $ma->setTournoi_id($console->input("id de tornement  :"));
+                    $ma->cree();
+                    break;
+
+                    case '2':
+                      $ma = new Matchs();
+                    $ma->setId($console->input("id:"));
+                    $ma->setNom($console->input("Nom:"));
+                    $ma->setTournoi_id($console->input("Tournoi_id:"));
+                    $ma->setEquipeA_id($console->input("EquipeA_id:"));
+                    $ma->setEquipeB_id($console->input("EquipeB_id:"));
+                    $ma->setGagnant_id($console->input("Gagnant_id:"));
+                    $ma->setScore_A($console->input("Score_A:"));
+                    $ma->setScore_B($console->input("Score_B:"));
+                    $ma->update();
+
+                    break;
+
+                    case '3':
+                    $ma = new Matchs();
+                    $ma->setId($console->input("id:"));
+                    $ma->delete();
+                    break;
+                    
+                    case '4':
+                    $ma = new Matchs();
+                    $rows = $ma->gettAll();
+                    foreach($rows as $match){
+                      echo "id:". $match['match_id']."\n";
+                      echo "Nom:". $match['Nom']."\n";
+                      echo "Tournoi_id:". $match['Tournoi_id']."\n";
+                      echo "EquipeA_id:". $match['EquipeA_id']."\n";
+                      echo "EquipeB_id :". $match['EquipeB_id']."\n";
+                      echo "Gagnant_id :". $match['Gagnant_id']."\n";
+                      echo "Score_A :". $match['Score_A']."\n";
+                      echo "Score_B :". $match['Score_B']."\n\n";
+                     
+                    }
+               break;
+               default:
+                 echo "Option invalide ";
+                 break;
+
+         }
+    break; 
     
      case '5':
            require_once("Tournoi.php");
@@ -164,7 +223,7 @@ switch($choix){
                  break;
 
          }
-    break; 
+    break;
     
     default:
                  echo "Option invalide ";
