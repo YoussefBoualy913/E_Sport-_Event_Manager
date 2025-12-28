@@ -1,7 +1,8 @@
 <?php 
 require_once 'Dtabese.php';
+require_once 'Calculable.php';
 
-class Statistiques{
+class Statistiques implements Calculable{
     
     private $db;
 
@@ -12,7 +13,7 @@ class Statistiques{
     }
 
 
-public function nmbreJourePareque(){
+public function calculer(){
      $conect = $this->db -> getConnexion();
       $sql = "SELECT club.name,equipe.Nom,COUNT(joueur.Joueur_id) as Nombrejoueur
               FROM club

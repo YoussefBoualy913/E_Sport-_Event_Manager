@@ -338,7 +338,7 @@ switch($choix){
          switch($choix1){
                 case '1':
                   $st = new Statistiques();
-                   $st->nmbreJourePareque();
+                   $st->calculer();
                 break;
                 case '2':
                   $st = new Statistiques();
