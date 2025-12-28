@@ -69,7 +69,71 @@ switch($choix){
 
          }
         }
-    break; 
+    break;
+    
+     case '2':
+           require_once("Joueur.php");
+            while(true){
+          echo "\n";
+          echo "**** Menu Joueur ****\n";
+          echo "1. AJouter un Joueur\n";
+          echo "2. Modifier un Joueur\n";
+          echo "3. Suppime un Joueur\n";
+          echo "4. Afficher un Joueur\n";
+           echo "5. Menu principale\n";
+          $choix2 = $console->input("Entre votre choix");
+          echo "\n";
+         switch($choix2){
+                   case '1':
+                    $joe = new Joueur();
+                    $joe->setNom($console->input("Nom:"));
+                    $joe->setRôle($console->input("Rôle:"));
+                    $joe->setSalaire($console->input("Salaire:"));
+                    $joe->setEquipeID($console->input("id de Equipe:"));
+                     echo "\n";
+                    $joe->cree();
+                    echo "\n";
+                    break;
+
+                    case '2':
+                      $joe = new Joueur();
+                    $joe->setId($console->input("id:"));
+                    $joe->setNom($console->input("Nom:"));
+                    $joe->setRôle($console->input("Rôle:"));
+                    $joe->setSalaire($console->input("Salaire:"));
+                    $joe->setEquipeID($console->input("id de Equipe:"));
+                    $joe->update();
+
+                    break;
+
+                    case '3':
+                    $joe = new Joueur();
+                    $joe->setId($console->input("id:"));
+                    $joe->delete();
+                    break;
+
+                    case '4':
+                    $joe = new Joueur();
+                    $rows = $joe->gettAll();
+                    foreach($rows as $jeour){
+                      echo "id:". $jeour['Joueur_id']."\n";
+                      echo "Nom:". $jeour['Pseudo']."\n";
+                      echo "Role:". $jeour['Rôle']."\n";
+                      echo "Salaire:". $jeour['Salaire']."\n";
+                      echo " Equipe:". $jeour['Equipe_id']."\n\n";
+                    }
+               break;
+
+                case '5':
+                  goto principale;
+                  break;
+               default:
+                 echo "Option invalide \n";
+                 break;
+
+         }
+        }
+    break;
 
     case '3':
            require_once("Equipe.php");
