@@ -2,6 +2,7 @@
  require("console.php");
  require("club.php");
 
+principale:
 while(true){
     echo "============Menu principale================\n";
     echo "1.club\n";
@@ -10,20 +11,24 @@ while(true){
     echo "4.Match\n";
     echo "5.tornoi\n";
     echo "6.statistique\n";
-    break;
-}
- $console = new Console();
-$choix = $console->input("Entre votre choix\n");
+    echo "7.Quiter\n";
+  
 
+ $console = new Console();
+$choix = $console->input("Entre votre choix");
+echo "\n";
 switch($choix){
    case '1':
-    
-          echo "-----------------Menu Club---------------\n";
+         while(true){
+          echo "**** Menu Club ****\n";
           echo "1. AJouter un club\n";
           echo "2. Modifier un club\n";
           echo "3. Suppime un club\n";
           echo "4. Afficher un club\n";
+          echo "5. Menu principale\n";
+           
           $choix1 = $console->input("Entre votre choix");
+          echo "\n";
          switch($choix1){
                    case '1':
               $cl = new Club();
@@ -54,22 +59,30 @@ switch($choix){
                 echo "ville:". $club['ville']."\n\n";
               }
                break;
+
+                case '5':
+                  goto principale;
+                  break;
                default:
-                 echo "Option invalide ";
+                 echo "Option invalide \n";
                  break;
 
          }
+        }
     break; 
 
     case '3':
            require_once("Equipe.php");
-          echo "-----------------Menu Equipe-------------------\n";
+            while(true){
+          echo "**** Menu Equipe ****\n";
 
           echo "1. AJouter un Equipe\n";
           echo "2. Modifier un Equipe\n";
           echo "3. Suppime un Equipe\n";
           echo "4. Afficher un Equipe\n";
+           echo "5. Menu principale\n";
           $choix2 = $console->input("Entre votre choix");
+          echo "\n";
          switch($choix2){
                    case '1':
                     $eq = new Equipe();
@@ -105,22 +118,30 @@ switch($choix){
                       echo "clube :". $equip['Club_id']."\n\n";
                     }
                break;
+
+                case '5':
+                  goto principale;
+                  break;
                default:
-                 echo "Option invalide ";
+                 echo "Option invalide \n";
                  break;
 
          }
+        }
     break;
 
      case '4':
            require_once("Match.php");
-          echo "-----------------Menu Matchs-------------------\n";
+            while(true){
+          echo "**** Menu Matchs ****\n";
 
           echo "1. AJouter un Matchs\n";
           echo "2. Modifier un Matchs\n";
           echo "3. Suppime un Matchs\n";
           echo "4. Afficher un Matchs\n";
+           echo "5. Menu principale\n";
           $choix2 = $console->input("Entre votre choix");
+          echo "\n";
          switch($choix2){
                    case '1':
                     $ma = new Matchs();
@@ -164,22 +185,30 @@ switch($choix){
                      
                     }
                break;
+
+               case '5':
+                  goto principale;
+                  break;
                default:
-                 echo "Option invalide ";
+                 echo "Option invalide \n";
                  break;
 
          }
+        }
     break; 
     
      case '5':
            require_once("Tournoi.php");
-          echo "-----------------Menu Tournoi-------------------\n";
+            while(true){
+          echo "**** Menu Tournoi ****\n";
 
           echo "1. AJouter un Tournoi\n";
           echo "2. Modifier un Tournoi\n";
           echo "3. Suppime un Tournoi\n";
           echo "4. Afficher un Tournoi\n";
+           echo "5. Menu principale\n";
           $choix2 = $console->input("Entre votre choix");
+          echo "\n";
          switch($choix2){
                    case '1':
                     $eq = new Tournoi();
@@ -218,16 +247,28 @@ switch($choix){
                       echo "Date :". $equip['Date']."\n\n";
                     }
                break;
+
+               
+                case '5':
+                  goto principale;
+                  break;
                default:
-                 echo "Option invalide ";
+                 echo "Option invalide \n";
                  break;
 
          }
+        }
     break;
+
+    case '7':
+            echo "Fermeture de l'application...";
+            exit;
+
     
     default:
-                 echo "Option invalide ";
+                 echo "Option invalide \n";
                  break;
+}
 }
 
 ?>
