@@ -1,6 +1,6 @@
 <?php 
  require("console.php");
- require("club.php");
+ 
 
 principale:
 while(true){
@@ -19,6 +19,7 @@ $choix = $console->input("Entre votre choix");
 echo "\n";
 switch($choix){
    case '1':
+    require("club.php");
          while(true){
           echo "**** Menu Club ****\n";
           echo "1. AJouter un club\n";
@@ -314,6 +315,36 @@ switch($choix){
 
                
                 case '5':
+                  goto principale;
+                  break;
+               default:
+                 echo "Option invalide \n";
+                 break;
+
+         }
+        }
+    break;
+
+    case '6':
+    require("Statistiques.php");
+         while(true){
+           echo "\n";
+          echo "**** Menu Statistiques ****\n";
+          echo "1. Nombre de joueur par Equipe\n";
+          echo "2. Tornoi a plus de deux match\n";
+          echo "3. Menu principale\n";
+          $choix1 = $console->input("Entre votre choix");
+          echo "\n";
+         switch($choix1){
+                case '1':
+                  $st = new Statistiques();
+                   $st->nmbreJourePareque();
+                break;
+                case '2':
+                  $st = new Statistiques();
+                   $st->tornoiMatch();
+                break;
+                case '3':
                   goto principale;
                   break;
                default:
